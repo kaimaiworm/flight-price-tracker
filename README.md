@@ -2,6 +2,21 @@
 
 Tracks flight prices for configured routes using the Amadeus API. Prices are stored in a MySQL database and a summary email is sent after each fetch run. Additionally, results can be fetched from DB via a REST API with Redis caching.
 
+For the project to work an .env is needed with the following entries:
+
+```
+AMADEUS_API_KEY             -> Amadeus API key
+AMADEUS_API_SECRET          -> Amadeus API key
+
+SMTP_MAIL                   -> Outgoing Email Address
+SMTP_PASSWORD               -> Email  App Password
+ALERT_MAIL                  -> Alert Email Address
+
+DB_URL=mysql+aiomysql://user:password@localhost:3306/flightprices
+REDIS_URL=redis://localhost:6379
+
+```
+
 ## Structure
 
 ```

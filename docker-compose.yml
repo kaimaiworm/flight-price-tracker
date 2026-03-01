@@ -2,8 +2,8 @@ services:
   db:
     image: mysql:8
     environment:
-      MYSQL_USER: kai
-      MYSQL_PASSWORD: maiworm
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
       MYSQL_DATABASE: flightprices
       MYSQL_ROOT_PASSWORD: root
     ports:

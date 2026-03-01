@@ -20,7 +20,7 @@ host = "smtp.gmail.com"
 port = 587 
 outgoing_mail = os.getenv("SMTP_MAIL")
 password = os.getenv("SMTP_PASSWORD")
-alert_mail = config["settings"]["alert_mail"]
+alert_mail = os.getenv("ALERT_MAIL")
 
 
 def build_email(stats: list[dict]):
@@ -37,14 +37,25 @@ def build_email(stats: list[dict]):
     # Loop over each route
     for s in stats:
         # Text used for all routes
-        text_lines = [
-            f"  Current price:  {s['current_price']:.2f}",
-            f"  Last price:     {s['last_price']:.2f}",
-            f"  All-time low:   {s['all_time_low']:.2f}",
-            f"  All-time high:  {s['all_time_high']:.2f}",
-            f"  30-day low:     {s['low_30d']:.2f}",
-            f"  30-day high:    {s['high_30d']:.2f}",
-        ]
+        if not s['last_price']:
+            # dont include last price in text when there is None
+            text_lines = [
+                f"  Current price:  {s['current_price']:.2f}",
+                f"  All-time low:   {s['all_time_low']:.2f}",
+                f"  All-time high:  {s['all_time_high']:.2f}",
+                f"  30-day low:     {s['low_30d']:.2f}",
+                f"  30-day high:    {s['high_30d']:.2f}",
+            ]
+        
+        else:
+            text_lines = [
+                f"  Current price:  {s['current_price']:.2f}",
+                f"  Previous price: {s['last_price']:.2f}",
+                f"  All-time low:   {s['all_time_low']:.2f}",
+                f"  All-time high:  {s['all_time_high']:.2f}",
+                f"  30-day low:     {s['low_30d']:.2f}",
+                f"  30-day high:    {s['high_30d']:.2f}",
+            ]
 
         # Build departure flight text block
         if s["date"] == dep_date:
