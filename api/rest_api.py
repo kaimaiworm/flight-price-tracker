@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 from fastapi import FastAPI, Depends, HTTPException
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
-from db import async_session, Prices, Route
+from db.db import async_session, Prices, Route
 from price_fetcher.stats import compute_stats
 
 load_dotenv()

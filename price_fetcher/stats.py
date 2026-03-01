@@ -1,6 +1,6 @@
 from datetime import datetime, timedelta, timezone
 from sqlalchemy import func, select
-from db import Prices
+from db.db import Prices
 
 
 async def compute_stats(session, route_id: int):
