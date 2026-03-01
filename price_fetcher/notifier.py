@@ -5,11 +5,13 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 import configparser
 from dotenv import load_dotenv
+from pathlib import Path
 
+config_path = Path(__file__).resolve().parent.parent / "config.ini"
 load_dotenv()
 
 config = configparser.ConfigParser()
-config.read("config.ini")
+config.read(config_path)
 
 # Load dates from config to identify departure and return flight
 dep_date = config["dates"]["dep_date"]

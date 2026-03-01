@@ -7,11 +7,13 @@ from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 from db.db import async_session, Prices, Route
 from price_fetcher.stats import compute_stats
+from pathlib import Path
 
+config_path = Path(__file__).resolve().parent.parent / "config.ini"
 load_dotenv()
 
 config = configparser.ConfigParser()
-config.read("config.ini")
+config.read(config_path)
 
 # Redis Seup
 redis_client = aioredis.from_url(os.getenv("REDIS_URL"))

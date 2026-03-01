@@ -3,7 +3,7 @@ name = "flight-price-tracker"
 version = "0.2.0"
 description = "Async flight price tracker with email alert"
 readme = "README.md"
-requires-python = ">=3.11"
+requires-python = "==3.12.10"
 
 dependencies = [
     "fastapi",

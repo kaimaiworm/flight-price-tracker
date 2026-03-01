@@ -2,9 +2,11 @@
 
 import httpx
 import configparser
+from pathlib import Path
 
+config_path = Path(__file__).resolve().parent.parent / "config.ini"
 config = configparser.ConfigParser()
-config.read("config.ini")
+config.read(config_path)
 
 BASE_URL = "http://localhost:8000"
 

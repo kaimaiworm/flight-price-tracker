@@ -1,3 +1,5 @@
+import sys
+from pathlib import Path
 import asyncio
 import configparser
 from datetime import datetime, timezone
@@ -7,9 +9,11 @@ from db.db import async_session, Prices, Route, init_db
 from price_fetcher.amadeus_api import get_cheapest_price
 from price_fetcher.notifier import send_email
 from price_fetcher.stats import compute_stats
+from pathlib import Path
 
+config_path = Path(__file__).resolve().parent.parent / "config.ini"
 config = configparser.ConfigParser()
-config.read("config.ini")
+config.read(config_path)
 
 
 async def get_or_create_route(session, origin: str, destination: str, unit: str, date: str):

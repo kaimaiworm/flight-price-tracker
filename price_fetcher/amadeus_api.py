@@ -3,11 +3,13 @@ import configparser
 from amadeus import Client
 from dotenv import load_dotenv
 import warnings
+from pathlib import Path
 
+config_path = Path(__file__).resolve().parent.parent / "config.ini"
 load_dotenv()
 
 config = configparser.ConfigParser()
-config.read("config.ini")
+config.read(config_path)
 
 # Init Amadeus API client
 amadeus = Client(
