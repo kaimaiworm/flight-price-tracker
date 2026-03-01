@@ -1,7 +1,7 @@
 [project]
 name = "flight-price-tracker"
-version = "0.1.0"
-description = "Async flight price tracker with alerting"
+version = "0.2.0"
+description = "Async flight price tracker with email alert"
 readme = "README.md"
 requires-python = ">=3.11"
 
@@ -9,10 +9,10 @@ dependencies = [
     "fastapi",
     "uvicorn",
     "sqlalchemy",
-    "asyncpg",
-    "psycopg2-binary",
+    "aiomysql",
     "redis",
-    "apscheduler",
     "httpx",
     "python-dotenv",
+    "amadeus",
+    "cryptography"
 ]
