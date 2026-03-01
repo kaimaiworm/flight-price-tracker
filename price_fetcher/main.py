@@ -4,7 +4,7 @@ from datetime import datetime, timezone
 import warnings
 from sqlalchemy import select
 from db.db import async_session, Prices, Route, init_db
-from price_fetcher.amadeus import get_cheapest_price
+from price_fetcher.amadeus_api import get_cheapest_price
 from price_fetcher.notifier import send_email
 from price_fetcher.stats import compute_stats
 

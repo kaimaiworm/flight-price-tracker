@@ -1,6 +1,6 @@
 import os
 import configparser
-from amadeus import Client, ResponseError
+from amadeus import Client
 from dotenv import load_dotenv
 import warnings
 
